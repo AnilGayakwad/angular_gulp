@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<title>task</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    #main-content {
+        margin: 20px;
+        position: relative;
+        background: #fff;
+    }
+    .hiddenRow {
+    padding: 0 !important;
+    }
+    .h-padding-right {
+        padding-right: 15px;
+    }
+    .grayBox {
+     height: 50px;
+     width: 75px;
+     background: gray;
+     boder:2px solid gray;
+    }
+    .rec-box {
+      height: 200px;
+      width:200px;
+      border:3px solid green;
+      margin:25px 15px;
+      box-shadow: 4px 4px 5px #888888;
+    }
+    #main-content .gray-box {
+        height: 30px;
+        width: 100px;
+        margin: 0 10px;
+        background: gray;
+        display: inherit;
+        border: 2px solid #a59696;
+    }
+    .sub-text{
+        font-weight: bold;
+        color: green;
+        font-size: 16px;
+        margin: 8px;
+
+    }
+    .demo1 {
+        background: #eeebeb;
+    }
+    #demo2 {
+        background: #c1d8ec;
+    }
+    #demo3 {
+        background: #ffc5c5;
+    }
+    </style>
+    <script type="text/javascript">
+    $('.collapse').on('show.bs.collapse', function () {
+    $('.collapse.in').collapse('hide');
+    });
+    </script>
+   </head>
+   <body>
+<div id="main-content">
+    <table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th>Changelist/Build</th>
+            <th>Owner</th>
+            <th>Time Started</th>
+            <th>State</th>
+            <th>Matrics</th>
+            <th>Build</th>
+            <th>Unit Test</th>
+            <th>Functional Test</t
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-toggle="collapse" data-target=".demo1">
+            <td><img class="h-padding-right" src="images/1.png"> Tenrox-R1_1235</td>
+            <td class="text-success">Anil</td>
+            <td>05 May 2013</td>
+            <td>pending</td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="hiddenRow">
+                <div class="collapse demo1 row">
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#demo2">
+            <td><img class="h-padding-right" src="images/2.png">432462</td>
+            <td class="text-success">Thiru</td>
+            <td>05 May 2013</td>
+            <td>running</td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="hiddenRow">
+                <div id="demo2" class="collapse row">
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                <div class="col-xs-3 rec-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#demo3">
+            <td><img class="h-padding-right" src="images/3.png">432461</td>
+            <td class="text-success">Vijay</td>
+            <td>05 May 2013</td>
+            <td>Rejected</td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td><p class="gray-box"></p></td>
+            <td> <p class="gray-box"></p></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="hiddenRow">
+                <div id="demo3" class="row">
+                <div class="col-xs-3 rec-box">
+                    <h2 class="sub-text">Metrics</h2>
+                </div>
+                <div class="col-xs-3 rec-box">
+                    <h2 class="sub-text">Build</h2>
+                </div>
+                <div class="col-xs-3 rec-box">
+                    <h2 class="sub-text">Unit Test</h2>
+                </div>
+                <div class="col-xs-3 rec-box">
+                    <h2 class="sub-text">Functional Test</h2>
+                </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+   </body>
+</html>

@@ -1,0 +1,122 @@
+<div ui-view='header'></div>
+<div ng-controller="homeCtrl as home">
+   <h1 ng-bind="home.welcomeText"></h1>
+   <script type="text/javascript">
+      $(".table").delegate('.hdrow', 'click', function () { 
+                $('.collapse.in').collapse('hide');
+            });
+      $('.collapse').on('show.bs.collapse', function () { 
+                $('.collapse.in').collapse('hide');
+            });
+        
+   </script>
+   <style type="text/css">
+      .social-icons span{
+        padding-right: 5px;
+        display: inline;
+      }
+              
+      .arrow-icon {
+          height: 70px;
+          width: 70px;
+      }
+
+   </style>
+   <div id="main-content">
+      <table class="table table-bordered" style="border-collapse:collapse;">
+         <thead>
+            <tr>
+               <th>Changelist/Build</th>
+               <th>Owner</th>
+               <th>Time Started</th>
+               <th>State</th>
+               <th>Matrics</th>
+               <th>Build</th>
+               <th>Unit Test</th>
+               <th>Functional Test</t
+            </tr>
+         </thead>
+         <tbody ng-repeat="item in itemCollection track by $index">
+            <tr data-toggle="collapse" data-target=".demo{{$index}}" class="hdrow">
+               <td><img ng-class="item.type === 'build' ? 'show' : 'hide'" class="h-padding-right" src="../images/1.png"> 
+                  <img ng-class="item.type !== 'build' ? 'show' : 'hide'" class="h-padding-right" src="/images/2.png"> 
+                  {{item.buildNo}}
+               </td>
+               <td class="text-success">{{item.owner}}</td>
+               <td>{{item.timeStamp}}</td>
+               <td>{{item.state}}</td>
+               <td>
+                  <p ng-class="(item.metrics.status === 'completed') ? 'red-box' : (item.metrics.status === 'running') ? 'hide' : 'gray-box'" ></p> 
+  				  <div ng-class="(item.metrics.status === 'running') ? 'show' : 'hide'"  class="progress">
+					  <div class="progress-bar" style="width: 60%;"></div>
+				  </div>
+	
+               </td>
+               <td>
+                  <p ng-class="(item.build.status === 'completed') ? 'red-box' : (item.build.status === 'running') ? 'hide' : 'gray-box'" ></p> 
+                  <div ng-class="(item.build.status === 'running') ? 'show' : 'hide'"  class="progress">
+					  <div class="progress-bar" style="width: 60%;"></div>
+				  </div>
+               </td>
+               <td>
+                  <p ng-class="(item.unitTest.status === 'completed') ? 'red-box' : (item.unitTest.status === 'running') ? 'hide' : 'gray-box'" ></p> 
+                  <div ng-class="(item.unitTest.status === 'running') ? 'show' : 'hide'"  class="progress">
+					  <div class="progress-bar" style="width: 60%;"></div>
+				  </div>
+               </td>
+               <td>
+                  <p ng-class="(item.functionalTest.status === 'completed') ? 'red-box' : (item.functionalTest.status === 'running') ? 'hide' : 'gray-box'" ></p> 
+                  <div ng-class="(item.functionalTest.status === 'running') ? 'show' : 'hide'"  class="progress">
+					  <div class="progress-bar" style="width: 60%;"></div>
+				  </div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="8" class="hiddenRow">
+                  <div class="collapse demo{{$index}} row">
+                     <div class="col-xs-3 rec-box" ng-click="openBuild('build')">
+                        <h2 class="sub-text">Metrics</h2>  
+                           <div class="social-wrapper">
+                            <div class="social-icons"> 
+                             <span><a href="#"><img  class="arrow-icon" src="../images/up.png"></a></span> 
+                             <span> <a href="#"><img  class="arrow-icon" src="../images/up.png"></a></span> <br>
+                             <span> <a href="#"><img class="arrow-icon" src="../images/right.png"></a></span>
+                             <span> <a href="#"><img class="arrow-icon" src="../images/right.png"></span>
+                             </div>
+                           </div> 
+                           <div> Test: {{item.metrics.test}} </div>
+                           <div> Maintainablity: {{item.metrics.maintainablity}} </div>
+                           <div> Security: {{item.metrics.security}} </div>
+                           <div> Workmanship: {{item.metrics.workmanship}} </div>
+                     </div>
+
+                     <div class="col-xs-3 rec-box" ng-click="openBuild('metrics')">
+                        <h2 class="sub-text">Build</h2>
+                        <img class="debug-img" src="images/6.png">
+                        {{item.build.timeStarted}}
+                     </div>
+                     <div class="col-xs-3 rec-box" ng-click="openBuild('testDetail')">
+                        <h2 class="sub-text">Unit Test</h2>
+                        <div class="paiChartt">
+                           <pai-chart index='{$index}' type='unitTest'>
+                        </div>
+                     </div>
+                     <div class="col-xs-3 rec-box" ng-click="openBuild('testDetail')">
+                        <h2 class="sub-text">Functional Test</h2>
+                        <div>
+                           <div pai-chart index='{$index}' type='functTest' style="width:180px; height:180px; margin-top: 33px;"></div>
+                        </div>
+                     </div>
+                     <div class="col-xs-3" style="height: 200px; width: 200px; text-align:center"> 
+	                  	<p style="text-align:center">Result:</p> 
+	                  	<p style="text-align:center; color:orange;">Change Accepted</p>
+	                  	<h1 style="text-align:center; color:orange; font-weight:normal; font-size:25px;">Auto-Merged</h1> 
+	                  	<button class="btn btn-primary">Merged Build</button> 
+	                  </div>
+                  </div> 
+               </td>
+            </tr> 
+         </tbody>
+      </table>
+   </div>
+</div>

@@ -1,0 +1,15 @@
+<div ui-view='header'></div>
+<div ng-controller="itemCtrl as item">
+	<h1> Add New Item</h1>
+	<div> Item Type </div>
+	<input type="radio" ng-model="item.type" value="Firewall" name="type"> firewall<br>
+	<input type="radio" ng-model="item.type" value="Build" name="type"> Build <br>
+
+	<div> Owner</div>
+	<input type='text' ng-model="item.ownder"></input>
+
+	<div> Schedule Time </div>
+	<input datetime-picker ng-model="item.timeStamp" /> 
+
+	<button ng-click="addItem()" type='button'> Add Item </button>
+</div>
